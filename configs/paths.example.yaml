@@ -1,0 +1,11 @@
+# Copy this file to:
+#
+#   configs/paths.local.yaml
+#
+# and edit the two paths for your machine.
+#
+# configs/paths.local.yaml is ignored by Git
+# and must never be committed.
+
+training_set_a: "C:/path/to/training_setA"
+training_set_b: "C:/path/to/training_setB"

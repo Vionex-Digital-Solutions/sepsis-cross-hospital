@@ -1,0 +1,46 @@
+{
+  "raw_data": {
+    "A": {
+      "patients": 20336,
+      "hours": 790215,
+      "septic_patients": 1790,
+      "nonseptic_patients": 18546,
+      "tree_sha256": "ad23f06c4580a873871f08f635a8f02a52e538089b1dc352f576be41d949fc70"
+    },
+    "B": {
+      "patients": 20000,
+      "hours": 761995,
+      "septic_patients": 1142,
+      "nonseptic_patients": 18858,
+      "tree_sha256": "6ae3634d90dd3003e5c3c761d24b75afe11d3741e7803ffd1ebfe6b886869da1"
+    }
+  },
+  "split": {
+    "seed": 1729,
+    "sha256": "1883b58134c36ecba43c6228aa4712d3cdc94b47ca3ad86507834c826d1a4c08",
+    "A": {
+      "train": 14235,
+      "validation": 3049,
+      "internal_test": 3052
+    },
+    "B": {
+      "train": 13999,
+      "validation": 2999,
+      "internal_test": 3002
+    }
+  },
+  "processed": {
+    "A_to_B": {
+      "train": "7b20e5ef21f9db0ecdb5129a82e4223cd673686116b947a0e1e71bf226597857",
+      "validation": "5130f764f9c1805d591ac755c592d269dd858ec24c323809ee3cf0a31ed4a6be",
+      "internal_test": "38657d1dab6ca43f9b8d3ea6c6e59f805ca1770691e36adb1bee54908a45e6cc",
+      "external": "eef0c3183e8d251e74d83a784c84d76bdb307867d3ad65994cc65ab4e01daec6"
+    },
+    "B_to_A": {
+      "train": "2124eb7b8337cdeab7c86e1e3749c8255b427f336c115134ccda4959a27c8cef",
+      "validation": "a68b667e1af519366ab284b1d7343ad6cb0e56879734ea7b6901616bef1fd9b5",
+      "internal_test": "d01da816c3c49aa8020e52326d7089dc28a6ca17f428feccde316aaeb07668e0",
+      "external": "38d0ec27765ae5b1393cb2d2caa414bb3e0499d102d482ef1fa25f97c467974b"
+    }
+  }
+}

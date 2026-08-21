@@ -1,0 +1,36 @@
+name: sepsis-cross-hospital
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11.15
+  - pip=26.2.1
+  - setuptools=84.0.0
+
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu126
+
+      # Core numerical and data stack
+      - numpy==2.4.6
+      - pandas==3.0.5
+      - scipy==1.17.1
+      - scikit-learn==1.9.0
+      - joblib==1.5.3
+
+      # Data formats and configuration
+      - pyarrow==22.0.0
+      - PyYAML==6.0.3
+
+      # Modeling
+      - torch==2.13.0+cu126
+      - xgboost==3.2.0
+
+      # Figures
+      - matplotlib==3.11.1
+
+      # Reproducibility tests
+      - pytest==9.1.1
+
+variables:
+  PYTHONNOUSERSITE: "1"

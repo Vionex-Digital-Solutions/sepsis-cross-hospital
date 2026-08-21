@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sepsis-cross-hospital"
+version = "0.1.0"
+description = "Cross-hospital early sepsis prediction using the PhysioNet/CinC Challenge 2019 dataset"
+requires-python = ">=3.11,<3.12"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

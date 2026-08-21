@@ -1,0 +1,158 @@
+study:
+  name: "Cross-Hospital Early Sepsis Prediction"
+  dataset: "PhysioNet/Computing in Cardiology Challenge 2019"
+  dataset_version: "1.0.0"
+  dataset_doi: "10.13026/v64v-d857"
+
+transfer:
+  directions:
+    - A_to_B
+    - B_to_A
+  target_data_used_for_training: false
+  target_data_used_for_model_selection: false
+  target_data_used_for_threshold_selection: false
+  target_data_used_for_calibration: false
+
+split:
+  seed: 1729
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  internal_test_fraction: 0.15
+  stratification: "patient-level SepsisLabel status"
+  algorithm: "SHA256 split-v1 deterministic patient ordering"
+  frozen_sha256: "1883b58134c36ecba43c6228aa4712d3cdc94b47ca3ad86507834c826d1a4c08"
+
+representations:
+  M0:
+    description: "context + current masks + time-since-last + 6-hour measurement counts"
+  V0:
+    description: "physiological values + context"
+  V1:
+    description: "V0 + current observation masks"
+  V2:
+    description: "V0 + current masks + time-since-last + 6-hour measurement counts"
+
+preprocessing:
+  dynamic_variables: 34
+  source_train_statistics_only: true
+  forward_fill: "causal"
+  remaining_missing_values: "source-training median"
+  tsl_cap: null
+  count6_window_hours: 6
+  source_unavailable_channels:
+    A_to_B:
+      - EtCO2
+    B_to_A: []
+
+threshold:
+  grid_start: 0.001
+  grid_stop: 0.999
+  grid_step: 0.001
+  selection_metric: "source-validation Challenge utility"
+  tie_break: "higher threshold"
+
+seeds:
+  model_ensemble:
+    - 1729
+    - 2718
+    - 31415
+    - 57721
+    - 65537
+  bootstrap: 1729
+
+logistic:
+  representation: V0
+  C_grid:
+    - 0.1
+    - 1.0
+    - 10.0
+  penalty: "L2"
+  solver: "lbfgs"
+  max_iter: 1000
+  class_weight: null
+  selection_metric: "source-validation Challenge utility"
+  tie_break: "smaller C"
+  scaling: "source-training RobustScaler, clipped [-10,10]"
+
+xgboost:
+  representations:
+    - M0
+    - V0
+    - V1
+    - V2
+  max_depth:
+    - 3
+    - 5
+  learning_rate:
+    - 0.03
+    - 0.10
+  max_boost_rounds: 1000
+  early_stopping_rounds: 50
+  objective: "binary:logistic"
+  eval_metric: "logloss"
+  tree_method: "hist"
+  device: "cuda"
+  subsample: 0.8
+  colsample_bytree: 0.8
+  min_child_weight: 1.0
+  reg_lambda: 1.0
+  max_bin: 256
+  class_weight: null
+  selection_metric: "source-validation Challenge utility"
+  tie_break: "shallower max_depth, then lower learning_rate"
+
+gru:
+  input_features: 108
+  inputs: "values/context + current masks + time-since-last"
+  count6_features: false
+  hidden_size: 64
+  num_layers: 1
+  bidirectional: false
+  learning_rate: 0.001
+  optimizer: "Adam"
+  weight_decay: 0.0
+  dropout: 0.0
+  loss: "unweighted BCEWithLogitsLoss"
+  batch_size_patients: 128
+  max_epochs: 60
+  early_stopping_patience: 8
+  early_stopping_metric: "source validation BCE"
+  scaling: "source-training RobustScaler, clipped [-10,10]"
+
+pae:
+  branches:
+    - V0
+    - V2
+  alphas:
+    - 0.25
+    - 0.50
+    - 0.75
+  selection_metric: "source-validation Challenge utility"
+  tie_break: "larger alpha"
+  branch_training: "independent frozen XGBoost protocol"
+
+evaluation:
+  challenge_utility: true
+  auroc: true
+  auprc: true
+  brier: true
+  calibration:
+    method: "joint intercept and slope"
+    probability_clip:
+      - 0.000001
+      - 0.999999
+    bounds:
+      intercept: null
+      slope: null
+    evaluation_only: true
+  bootstrap:
+    replicates: 1000
+    unit: "patient"
+    paired_across_models: true
+    confidence_interval: "percentile 2.5/97.5"
+    bca: false
+    multiplicity_adjustment: false
+  contrasts:
+    - PAE_minus_XGB_V2
+    - XGB_V1_minus_XGB_V0
+    - XGB_V2_minus_XGB_V0
