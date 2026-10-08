@@ -10,6 +10,10 @@ The study evaluates direct transfer between the two public hospital systems:
 
 Target-hospital data are not used for preprocessing statistics, feature selection, hyperparameter selection, calibration, threshold selection, or model selection.
 
+## Revision analyses
+
+Additional RF, ExtraTrees and MLP reproduction, reference outputs and interpretation are documented in [docs/REVISION.md](docs/REVISION.md).
+
 ## Dataset
 
 The study uses:
@@ -450,7 +454,7 @@ python -m pytest -q
 
 ```
 
-The validated repository contains 50 automated tests covering splitting, labels, leakage safeguards, preprocessing, Challenge utility, thresholding, GRU behavior, PAE behavior, and external evaluation.
+The automated tests cover splitting, labels, leakage safeguards, preprocessing, Challenge utility, thresholding, GRU behavior, PAE behavior, and external evaluation.
 
 ## Reproducibility safeguards
 
@@ -548,19 +552,15 @@ tests/
 
 Generated data, model checkpoints, run artifacts, local path configuration, and raw patient-level files are intentionally excluded from version control.
 
-## Key external-transfer result
+## External-transfer findings
 
-The main finding is direction-dependent.
+The original XGBoost results show direction-dependent utility effects.
+The additional RF, ExtraTrees and MLP analyses show that effects also depend
+on the classifier. The direct timing/count comparison is V2 minus V1; those
+follow-up intervals and their exploratory status are documented in
+[docs/REVISION.md](docs/REVISION.md).
 
-Current observation masks improve external Challenge utility over the values-only XGBoost representation in both transfer directions.
-
-Adding time-since-last-measurement and six-hour measurement counts further improves utility for A -> B, but reduces utility for B -> A.
-
-For B -> A, this utility reduction occurs despite V0 and V2 having nearly identical external discrimination, illustrating that cross-hospital utility behavior is not explained by AUROC or AUPRC alone.
-
-The PAE partially attenuates the B -> A V2 utility loss but does not consistently outperform V1.
-
-For A -> B, the paired PAE-minus-V2 utility contrast is approximately `+0.000075`, with a 95% bootstrap interval crossing zero. No superiority, statistical-significance, or equivalence claim is made from this contrast.
+PAE is an exploratory mitigation strategy and does not consistently outperform V1.
 
 ## Data and privacy
 

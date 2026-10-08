@@ -1,0 +1,21 @@
+{
+  "analysis_stage": "Additional exploratory revision robustness analyses",
+  "sklearn_version": "1.9.0",
+  "directions": ["A_to_B", "B_to_A"],
+  "representations": ["V0", "V1", "V2"],
+  "feature_counts": {"V0": 40, "V1": 74, "V2": 142},
+  "seeds": [1729, 2718, 31415, 57721, 65537],
+  "feature_schema_canonical_sha256": "0788b6dc385d89f2d7c0768e64da737b7fa2314949ea8cbc42d9a327198c0256",
+  "common_parameters": {
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 20,
+    "max_features": "sqrt",
+    "class_weight": null,
+    "n_jobs": 8
+  },
+  "bootstrap": {"rf": true, "extra_trees": false},
+  "preprocessing": "Original frozen causally imputed source features; no scaling",
+  "class_resampling": false,
+  "target_data_used_for_fitting": false
+}

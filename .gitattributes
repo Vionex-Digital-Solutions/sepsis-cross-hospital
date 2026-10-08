@@ -1,0 +1,7 @@
+# Preserve bytes used by revision provenance hashes.
+configs/revision_*.json -text
+scripts/*revision*.py -text
+scripts/evaluate_rf_ensembles.py -text
+scripts/evaluate_rf_seed_stability.py -text
+src/sepsis_cross_hospital/models/revision_mlp.py -text
+expected_outputs/revision/** -text

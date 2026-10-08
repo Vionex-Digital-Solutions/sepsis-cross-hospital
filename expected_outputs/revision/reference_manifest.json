@@ -1,0 +1,22 @@
+{
+  "analysis_stage": "Additional exploratory revision analyses",
+  "incremental_contrasts": "V2 minus V1; exploratory follow-ups after reviewing results",
+  "files_sha256": {
+    "external_comparison.csv": "678070bb70ae1f3535f1fc5461a2cb8465663c1dcbcdf9ee1e0dd6206aa10f26",
+    "feature_contrasts.csv": "42f89b4cb8eb62b0d6e1ab51b9c4e21ce6c29265b7eddcda0f349fde691ce96c",
+    "rf_metrics_all.csv": "c4afddf39b4908b217e209a31a4c09503f8043d592c4c2b5d86c9667c03d2814",
+    "rf_paired_contrasts.csv": "dace66351163165b328778a0a35daad62063cd77c71ebadcd735e798f2f790d9",
+    "rf_transfer_gaps.csv": "02c746b60c0231f0663e37d0386c97d8a759760803f6400b59552ffcf6b14f34",
+    "rf_frozen_protocol.json": "4a8704a570b980228f969c06f8343b3e10738cbdc78ad1ae77f62a993316a408",
+    "et_mlp_metrics_all.csv": "d725ea7597076d38f151c6e0b9a0db520967605332cc933446ab9d5b4f6901b5",
+    "et_mlp_paired_contrasts.csv": "af3ed8903894eac8269aa2c26685729649283a83dd8648eecb96f7cc9fbf510d",
+    "et_mlp_transfer_gaps.csv": "5b0d68fa51e65c8cc83b9d64b63eb21ddcc985718e32a034e7af0fee9feaaa0a",
+    "et_mlp_source_thresholds.csv": "646703c41bda7adcc3ff3f55eeb67497331fe4777f07e61b61af5b208834e9e4",
+    "et_mlp_frozen_protocol.json": "7fc9c1f824e4d9f409f8af1f8db8e1cb45216e6d8d5346a87409a924de785703",
+    "rf_seed_metrics.csv": "4e683b6feb8d31f3295a9fcdb94f8e1c6ad7292254fc9c1f5b8b58b1d49861fb",
+    "rf_seed_contrasts.csv": "3d570aba2ab189cb018b450f55038d25faba6040cde72a0c0a0799ace2f6c427",
+    "rf_seed_summary.csv": "2fc8af4acecb20cdde84d28b2b84ce932aa45f87f3e6c9dda92204f96b3a2cd7",
+    "rf_source_thresholds.csv": "a212527ff946b566444bdc2e8fc9984f3f3b8c9c96e5f1e8c9f8d4db2a325246",
+    "rf_seed_frozen_protocol.json": "a69406feac2889b027aef1eaf06c963aba893ba09c93c790439e6a26ae8afdff"
+  }
+}

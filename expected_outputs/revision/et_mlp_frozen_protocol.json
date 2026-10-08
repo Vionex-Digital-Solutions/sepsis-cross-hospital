@@ -1,0 +1,569 @@
+{
+  "analysis": "Additional exploratory ExtraTrees and MLP revision analyses",
+  "source_thresholds": {
+    "A_to_B": {
+      "ET_V0": 0.023,
+      "ET_V1": 0.030000000000000002,
+      "ET_V2": 0.025,
+      "MLP_V0": 0.031,
+      "MLP_V1": 0.033,
+      "MLP_V2": 0.024
+    },
+    "B_to_A": {
+      "ET_V0": 0.019000000000000003,
+      "ET_V1": 0.027000000000000003,
+      "ET_V2": 0.026000000000000002,
+      "MLP_V0": 0.022000000000000002,
+      "MLP_V1": 0.031,
+      "MLP_V2": 0.031
+    }
+  },
+  "probability_combination": "Equal average of five seed probabilities",
+  "threshold_grid": "0.001 through 0.999; step 0.001; higher on ties",
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 1729,
+  "contrasts": "Within each family: V1 minus V0; V2 minus V0",
+  "calibration_usage": "Diagnostics only; probabilities unchanged",
+  "bootstrap_scope": "Patient sampling conditional on fixed trained ensembles",
+  "source_input_sha256": {
+    "A_to_B/feature_schema": "81fdb78e2c1fe42780b32ac67bb3d31f924fc6f49646be2201f8490e55423d2f",
+    "B_to_A/feature_schema": "81fdb78e2c1fe42780b32ac67bb3d31f924fc6f49646be2201f8490e55423d2f",
+    "A_to_B/train": "7b20e5ef21f9db0ecdb5129a82e4223cd673686116b947a0e1e71bf226597857",
+    "A_to_B/validation": "5130f764f9c1805d591ac755c592d269dd858ec24c323809ee3cf0a31ed4a6be",
+    "B_to_A/train": "2124eb7b8337cdeab7c86e1e3749c8255b427f336c115134ccda4959a27c8cef",
+    "B_to_A/validation": "a68b667e1af519366ab284b1d7343ad6cb0e56879734ea7b6901616bef1fd9b5"
+  },
+  "data_reference_sha256": "381e0531863ad1b534850aa08d6c8200a665ee352d5008795d4235c3df192ae6",
+  "code_sha256": {
+    "evaluation": "dc5dacc5ddfd45170a085acea42e00ce373c82d9de8a511f040ef478eca324ca",
+    "tree_training": "92d69b0519d7013104049f7c712429502f17a3e450a2b35b7619c77014c4c927",
+    "mlp_helpers": "0fecc9976ea24b1a22875dd89cb52b8dfae4631b0e89a8024923976bfdf92356",
+    "metrics": "7053f799c65440eebbbfc3906e65e35e68e3c0e0ad67c408b6d2a3eb1feacf35",
+    "thresholding": "a750778e40e64ceebfa0b07d2d115fa203c8734c3243a5e0ce77d7938a2508a0",
+    "external_statistics": "e5d27e75bc03b63f544d9c000f41eda38179950fe78b12f38de2c1bdff5700ac"
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3",
+    "torch": "2.13.0+cu126",
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "platform": "Windows-10-10.0.26300-SP0"
+  },
+  "training": {
+    "extra_trees": {
+      "frozen_training_protocol": {
+        "protocol": {
+          "analysis_stage": "Additional exploratory revision robustness analyses",
+          "sklearn_version": "1.9.0",
+          "directions": [
+            "A_to_B",
+            "B_to_A"
+          ],
+          "representations": [
+            "V0",
+            "V1",
+            "V2"
+          ],
+          "feature_counts": {
+            "V0": 40,
+            "V1": 74,
+            "V2": 142
+          },
+          "seeds": [
+            1729,
+            2718,
+            31415,
+            57721,
+            65537
+          ],
+          "feature_schema_canonical_sha256": "0788b6dc385d89f2d7c0768e64da737b7fa2314949ea8cbc42d9a327198c0256",
+          "common_parameters": {
+            "n_estimators": 200,
+            "max_depth": 12,
+            "min_samples_leaf": 20,
+            "max_features": "sqrt",
+            "class_weight": null,
+            "n_jobs": 8
+          },
+          "bootstrap": {
+            "rf": true,
+            "extra_trees": false
+          },
+          "preprocessing": "Original frozen causally imputed source features; no scaling",
+          "class_resampling": false,
+          "target_data_used_for_fitting": false
+        },
+        "protocol_sha256": "24b5e20b695f4afb606fcf298b3647b30992a1ddab2fac5af334f8725b4bc388",
+        "training_script_sha256": "92d69b0519d7013104049f7c712429502f17a3e450a2b35b7619c77014c4c927",
+        "data_reference_sha256": "381e0531863ad1b534850aa08d6c8200a665ee352d5008795d4235c3df192ae6",
+        "family": "extra_trees",
+        "selected_models": [
+          [
+            "A_to_B",
+            "V0",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V0",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V0",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V0",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V0",
+            65537
+          ],
+          [
+            "A_to_B",
+            "V1",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V1",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V1",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V1",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V1",
+            65537
+          ],
+          [
+            "A_to_B",
+            "V2",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V2",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V2",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V2",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V2",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V0",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V0",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V0",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V0",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V0",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V1",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V1",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V1",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V1",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V1",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V2",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V2",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V2",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V2",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V2",
+            65537
+          ]
+        ],
+        "versions": {
+          "python": "3.11.15",
+          "numpy": "2.4.6",
+          "pandas": "3.0.5",
+          "scikit_learn": "1.9.0",
+          "joblib": "1.5.3"
+        },
+        "target_patient_data_read": false,
+        "started_at_utc": "2026-10-08T00:40:07.360198+00:00"
+      },
+      "completion_sha256": "dbfbe2e80890afa1e5a1cb5bf8ed03a3aaf1da467001694d49a52ad34d4b351c",
+      "model_sha256": {
+        "A_to_B_V0/seed_1729.joblib": "a5e5636e1d513116f5dc3c309291a957c3dbb1a5578d54be578b18e69dd9bcd6",
+        "A_to_B_V0/seed_2718.joblib": "a0cdec88fab42f120f76ac0bc5589b31959878743d3f4807081d3c527a20a560",
+        "A_to_B_V0/seed_31415.joblib": "0a12b6987c352eab325c7491ed28a0e45afc2ed294d18d804892222a5590e2be",
+        "A_to_B_V0/seed_57721.joblib": "7b1e9ae392421f06190279126ed7eb2c1f10755bfb121386a40294f8be642100",
+        "A_to_B_V0/seed_65537.joblib": "1649681d1a1143ca89b2a6bf864f2716723419f6106c132e8d55827f5c55a42c",
+        "A_to_B_V1/seed_1729.joblib": "76891e89d7b9616abda6cb72e379cecd635fbdfed42625755d1d267b09013374",
+        "A_to_B_V1/seed_2718.joblib": "9e92ac4e94573773688b95336ee31ff3066458d5552138d1c1b9bcf61b41fb5f",
+        "A_to_B_V1/seed_31415.joblib": "da63443061de515c92bca704f389c92b688d11f609d2f98f2eba9a4228b9f3a0",
+        "A_to_B_V1/seed_57721.joblib": "58c166ca7ddd87aea8b0c21c33a6ca366425dc23f8121f1aa8982b15ede0239f",
+        "A_to_B_V1/seed_65537.joblib": "366e7de8f94bb6d8c5a9407533fdaefe257ab0a8dc6cdd9c7b70993275421516",
+        "A_to_B_V2/seed_1729.joblib": "44e44cc25d89efae94e6f16d9f1de762165ffd3b8e0a1b2eaba59305d6b8557f",
+        "A_to_B_V2/seed_2718.joblib": "1b91544edee837837757f663059997186ff4754c1ea349d0bcc8d930ccbc15c0",
+        "A_to_B_V2/seed_31415.joblib": "005b6f93edfb8da7ae41201145ceac9f011982d07703860633bd2b37708f03b7",
+        "A_to_B_V2/seed_57721.joblib": "b6039fae0f4f33287044e74c4446223d679b745ecfc4b8d8541ce57cc3e5fb66",
+        "A_to_B_V2/seed_65537.joblib": "881930ed5c42c0de1a1f22ff2f39db87047c15178a952c74db4fb6db3b9bc2da",
+        "B_to_A_V0/seed_1729.joblib": "145a75e46fbf1423a12c9babe43a6bd6ab1142e0c11ae0fe43f3355ebef6f613",
+        "B_to_A_V0/seed_2718.joblib": "4faa7ca6b96db2b723e6fca157ef0c79ebf0c5160163907b4b80f560ad308f10",
+        "B_to_A_V0/seed_31415.joblib": "dac3da6013380798a6e47857c07adf236d11b28f8c8b69346ea084c3d52f4e21",
+        "B_to_A_V0/seed_57721.joblib": "96038762d50804623cacf0304a1fa03c72685c81ff5dd045380731957de55d85",
+        "B_to_A_V0/seed_65537.joblib": "a021a0f5e2cd68856a5673a028123509eee59634ab59041108c911ee1bc8b0fd",
+        "B_to_A_V1/seed_1729.joblib": "4dd0800c6c76014bcf3d5ad026e42ece2c91636888bdc51d681c6f46d80ce99c",
+        "B_to_A_V1/seed_2718.joblib": "7e20cf6b57191c90c8c16c597dba27d71d7e5205d83bbe4de14a5ff446fae310",
+        "B_to_A_V1/seed_31415.joblib": "9ca067a103b37c6a7416fb0d81ab4e306945184d7bd29e58152b2971d9f231da",
+        "B_to_A_V1/seed_57721.joblib": "23b4cd8bc0ee05e6d487f6cc6db607085d38a2f06ba8d1413ff4ca3da8ecc7df",
+        "B_to_A_V1/seed_65537.joblib": "ac42cad102eba1ac36d662af7112e28027e916fc56c4cff4b8498674d4e16811",
+        "B_to_A_V2/seed_1729.joblib": "b250772d10aac35486b704ab696342e56d1bad42fa32d0beaf0c3703d8018b40",
+        "B_to_A_V2/seed_2718.joblib": "3251e8cc3874ad76231ef006f6d6e3ab66d7dd3c16ba6b6d4554941605d1417a",
+        "B_to_A_V2/seed_31415.joblib": "8c403d262c4e443f99baffbcb772115199369c95fe7f82c2e32628206ab3b3a6",
+        "B_to_A_V2/seed_57721.joblib": "3ece1b703ffc7dfd5605b04926aec348401b4e35e4575b1e3797947b8f94ed14",
+        "B_to_A_V2/seed_65537.joblib": "6069789474e6f686eae759fc930b01c9badba80b1a8e18a0b519f4c12f55c7d2"
+      }
+    },
+    "mlp": {
+      "frozen_training_protocol": {
+        "configuration": {
+          "analysis_stage": "Additional exploratory revision robustness analysis",
+          "torch_version": "2.13.0+cu126",
+          "sklearn_version": "1.9.0",
+          "directions": [
+            "A_to_B",
+            "B_to_A"
+          ],
+          "representations": [
+            "V0",
+            "V1",
+            "V2"
+          ],
+          "feature_counts": {
+            "V0": 40,
+            "V1": 74,
+            "V2": 142
+          },
+          "seeds": [
+            1729,
+            2718,
+            31415,
+            57721,
+            65537
+          ],
+          "feature_schema_canonical_sha256": "0788b6dc385d89f2d7c0768e64da737b7fa2314949ea8cbc42d9a327198c0256",
+          "hidden_sizes": [
+            64,
+            32
+          ],
+          "activation": "ReLU",
+          "positive_class": 1,
+          "scaler_quantiles": [
+            25.0,
+            75.0
+          ],
+          "feature_clip": 10.0,
+          "batch_size_hours": 2048,
+          "learning_rate": 0.001,
+          "max_epochs": 60,
+          "patience": 8,
+          "minimum_improvement": 0.0,
+          "loss": "Unweighted binary cross entropy with logits",
+          "checkpoint_selection": "Minimum source-validation BCE; earliest epoch on ties",
+          "adam_betas": [
+            0.9,
+            0.999
+          ],
+          "adam_eps": 1e-08,
+          "weight_decay": 0.0,
+          "class_resampling": false,
+          "dropout": 0.0,
+          "dtype": "float32",
+          "device": "cuda",
+          "deterministic_algorithms": true,
+          "tf32": false,
+          "cublas_workspace_config": ":4096:8"
+        },
+        "protocol_sha256": "685273f2f8d89d2f12a84decd6b3cff25c96172382957aff1ac699dd5066d2bb",
+        "code_sha256": {
+          "trainer": "de2bbdbe240beb68f371b42c18f0bf4affbd35dc03821379badcf12369d99233",
+          "mlp_helpers": "0fecc9976ea24b1a22875dd89cb52b8dfae4631b0e89a8024923976bfdf92356",
+          "source_helpers": "92d69b0519d7013104049f7c712429502f17a3e450a2b35b7619c77014c4c927"
+        },
+        "data_reference_sha256": "381e0531863ad1b534850aa08d6c8200a665ee352d5008795d4235c3df192ae6",
+        "versions": {
+          "python": "3.11.15",
+          "numpy": "2.4.6",
+          "pandas": "3.0.5",
+          "scikit_learn": "1.9.0",
+          "torch": "2.13.0+cu126",
+          "cuda": "12.6",
+          "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+          "platform": "Windows-10-10.0.26300-SP0"
+        },
+        "selected_models": [
+          [
+            "A_to_B",
+            "V0",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V0",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V0",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V0",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V0",
+            65537
+          ],
+          [
+            "A_to_B",
+            "V1",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V1",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V1",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V1",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V1",
+            65537
+          ],
+          [
+            "A_to_B",
+            "V2",
+            1729
+          ],
+          [
+            "A_to_B",
+            "V2",
+            2718
+          ],
+          [
+            "A_to_B",
+            "V2",
+            31415
+          ],
+          [
+            "A_to_B",
+            "V2",
+            57721
+          ],
+          [
+            "A_to_B",
+            "V2",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V0",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V0",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V0",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V0",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V0",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V1",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V1",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V1",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V1",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V1",
+            65537
+          ],
+          [
+            "B_to_A",
+            "V2",
+            1729
+          ],
+          [
+            "B_to_A",
+            "V2",
+            2718
+          ],
+          [
+            "B_to_A",
+            "V2",
+            31415
+          ],
+          [
+            "B_to_A",
+            "V2",
+            57721
+          ],
+          [
+            "B_to_A",
+            "V2",
+            65537
+          ]
+        ],
+        "external_patient_data_read": false,
+        "started_at_utc": "2026-10-08T01:46:06.632845+00:00"
+      },
+      "completion_sha256": "ca0a25da0ac5efe44cb1a048c350466ce19aeab7d35ee6461eaf979f30705ccc",
+      "model_sha256": {
+        "A_to_B_V0/seed_1729.joblib": "83d9118f92c21358867f0a389aca6044755e46d65b33a5257a89f8008ba363b7",
+        "A_to_B_V0/seed_2718.joblib": "9b2c5ab0d2c1e9d2eea51a0b0cc6f13b66c541539fb206d25a9ef818f52d511f",
+        "A_to_B_V0/seed_31415.joblib": "d466b1431369d3f723b1296992697df58c7e3db953ad7d60a0a5da6386989faa",
+        "A_to_B_V0/seed_57721.joblib": "6b733c63d740460b79c56f030d64c130be0fcc5075f26a5f66d217c7bbef9267",
+        "A_to_B_V0/seed_65537.joblib": "90c09b54e086b2cd0f04dcb1f72b11ebbde039fd3ae3bbf395564f61efd99857",
+        "A_to_B_V1/seed_1729.joblib": "937796e6c50d6181bb9cf6723ea7fff17dae875f649dd757a44450416af8d781",
+        "A_to_B_V1/seed_2718.joblib": "e69c3dcd074cf363620158945afacee709141b400205275e739364b4463b1748",
+        "A_to_B_V1/seed_31415.joblib": "a3e41cb6a0db58b1f4802574c0a8817b509cedcc01c8c67df8dea22ee1240e71",
+        "A_to_B_V1/seed_57721.joblib": "ab1d7aabc7631800c605a725eca046af9e41179be141d21b9996184eba5672eb",
+        "A_to_B_V1/seed_65537.joblib": "0ea4ccf3f7b8026207ea060317fbd9fc5ebcdff81f1466f642a132a5ada83b91",
+        "A_to_B_V2/seed_1729.joblib": "0cc04bb7da45467b53f786b0dc0a6ab38a1a1d3ecdb2b74482f19427cd6b0cf1",
+        "A_to_B_V2/seed_2718.joblib": "f70c8138e8b6642929733a1a6794cef6ae8640e4820126659e456631d86614b9",
+        "A_to_B_V2/seed_31415.joblib": "80a68dbf40f1a5e4201ef7c0365a5654c24120f5fa63e03a3999333d171d49db",
+        "A_to_B_V2/seed_57721.joblib": "21c8a9aefd2bab2b308a525b98b0201f218504eaabd973eb374e9f6cd087eff1",
+        "A_to_B_V2/seed_65537.joblib": "8e6f028a88b030b85c6f48dd28de7582a488afcfe76a6a5f5b5323210b79a9a7",
+        "B_to_A_V0/seed_1729.joblib": "045773847b3a1fe975fe3f9639f56e2f58584fc98c610276a74f11c333cd618f",
+        "B_to_A_V0/seed_2718.joblib": "78f29d495aaa6f9269612e3152f6f6b5c2e768db33bb808de88e8d5f153f49d3",
+        "B_to_A_V0/seed_31415.joblib": "7f5b0c0740b8d5af0a2cff458449b96b09b350b8cab49f5a23b0de33e8256cef",
+        "B_to_A_V0/seed_57721.joblib": "502122a36ac0109acc320f46ca569ef4fdccf94e59b5440b5ed7982e81c90438",
+        "B_to_A_V0/seed_65537.joblib": "ace998b894877febb28f1ccf1f348e0adb326a92100892e84bb5ce51341d503e",
+        "B_to_A_V1/seed_1729.joblib": "c4e6b6cbccbb4326734e8ba197ed7d24e589ec9f8b1bee414f2b3b748c725e70",
+        "B_to_A_V1/seed_2718.joblib": "8e2df21e0c9ce38c806268091f05fb9c9f9b15901a6e4a80fdd7c922db1c6116",
+        "B_to_A_V1/seed_31415.joblib": "cf0999eab3ccb47aa07de9b3253f41b7921ea0ec5e8363e2427b5672f97bc79f",
+        "B_to_A_V1/seed_57721.joblib": "832a0fc6ba6bb27252bbeda85df1adfe6e26f59ca0179405739e323a246a99de",
+        "B_to_A_V1/seed_65537.joblib": "369eb38dd74223b2dc22f4a0ffb522a696823a5b9d0ca6fc3205e011d6df4ab0",
+        "B_to_A_V2/seed_1729.joblib": "dd4fd0d82213a7874d9263fe2e6bb54b04b178a690ba1fe8d3367aec8ae4b142",
+        "B_to_A_V2/seed_2718.joblib": "bf0d5a8fd7d610efcade45403d63bc6fb0b31ac0c4984423794330b46cdd5426",
+        "B_to_A_V2/seed_31415.joblib": "5dc7f4b344f95f6bf570f890afcba03b05c9575e8989e619a52dfb9209d683f4",
+        "B_to_A_V2/seed_57721.joblib": "5e5aacbbf89d52ce60fb4457f0ac12ced45fd30ecd5a0cd5c975149f1fe68c8d",
+        "B_to_A_V2/seed_65537.joblib": "cbfe4e9e9367cd37c9d8d1fbf5728d36620a2eaffccc0fbb106778eb2fe29246"
+      }
+    }
+  },
+  "held_out_data_read_at_freeze": false,
+  "frozen_at_utc": "2026-10-08T02:37:34.456188+00:00"
+}

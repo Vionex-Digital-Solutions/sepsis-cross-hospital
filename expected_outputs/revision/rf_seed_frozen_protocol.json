@@ -1,0 +1,128 @@
+{
+  "analysis": "Additional descriptive RF seed sensitivity analysis",
+  "settings": {
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 20,
+    "max_features": "sqrt",
+    "bootstrap": true,
+    "class_weight": null,
+    "n_jobs": 8
+  },
+  "seeds": [
+    1729,
+    2718,
+    31415,
+    57721,
+    65537
+  ],
+  "source_thresholds": {
+    "A_to_B": {
+      "V0": {
+        "1729": 0.028,
+        "2718": 0.025,
+        "31415": 0.026000000000000002,
+        "57721": 0.024,
+        "65537": 0.026000000000000002
+      },
+      "V1": {
+        "1729": 0.024,
+        "2718": 0.025,
+        "31415": 0.035,
+        "57721": 0.027000000000000003,
+        "65537": 0.025
+      },
+      "V2": {
+        "1729": 0.025,
+        "2718": 0.023,
+        "31415": 0.027000000000000003,
+        "57721": 0.027000000000000003,
+        "65537": 0.027000000000000003
+      }
+    },
+    "B_to_A": {
+      "V0": {
+        "1729": 0.028,
+        "2718": 0.024,
+        "31415": 0.026000000000000002,
+        "57721": 0.030000000000000002,
+        "65537": 0.026000000000000002
+      },
+      "V1": {
+        "1729": 0.027000000000000003,
+        "2718": 0.025,
+        "31415": 0.024,
+        "57721": 0.024,
+        "65537": 0.026000000000000002
+      },
+      "V2": {
+        "1729": 0.030000000000000002,
+        "2718": 0.032,
+        "31415": 0.025,
+        "57721": 0.026000000000000002,
+        "65537": 0.026000000000000002
+      }
+    }
+  },
+  "threshold_selection": "Per model, source-validation utility; original grid and tie-break",
+  "variation_scope": "Estimator randomness and source-selected thresholds; fixed patient split",
+  "seed_summary": "Descriptive mean, sample SD, range, and sign counts; not confidence intervals",
+  "source_input_sha256": {
+    "A_to_B/feature_schema": "81fdb78e2c1fe42780b32ac67bb3d31f924fc6f49646be2201f8490e55423d2f",
+    "A_to_B/train": "7b20e5ef21f9db0ecdb5129a82e4223cd673686116b947a0e1e71bf226597857",
+    "A_to_B/validation": "5130f764f9c1805d591ac755c592d269dd858ec24c323809ee3cf0a31ed4a6be",
+    "B_to_A/feature_schema": "81fdb78e2c1fe42780b32ac67bb3d31f924fc6f49646be2201f8490e55423d2f",
+    "B_to_A/train": "2124eb7b8337cdeab7c86e1e3749c8255b427f336c115134ccda4959a27c8cef",
+    "B_to_A/validation": "a68b667e1af519366ab284b1d7343ad6cb0e56879734ea7b6901616bef1fd9b5"
+  },
+  "model_sha256": {
+    "A_to_B_V0/seed_1729.joblib": "53cb5c81428f9e664bd55d53f25061d267514cb40a50ba3302ec20cc29b9cb16",
+    "A_to_B_V0/seed_2718.joblib": "faf7805c3594a4fe13ea5f3c513a0037d55d7b97022046ea27c913507eae4b61",
+    "A_to_B_V0/seed_31415.joblib": "ab1ac10b2a40d340bcfa3b6ae52460278a31657d704a38073e0648f593951eab",
+    "A_to_B_V0/seed_57721.joblib": "532c4244464805eb64d96d1099187c3e57aced5ed621308b0c090c36af1748c7",
+    "A_to_B_V0/seed_65537.joblib": "89b827302ccf1ac343fb6b0f273ea7fe914ac653cd4dae3e62343a8807b2993a",
+    "A_to_B_V1/seed_1729.joblib": "ef757d52c5b5561ac0f1b51967842efee5077202f5e1590d9ba4ee06671ba731",
+    "A_to_B_V1/seed_2718.joblib": "d10e5fe2cc88c448feb7f691f46522ee20f56f63ea15391e47b1b756a7866ccb",
+    "A_to_B_V1/seed_31415.joblib": "f01ee887e1bad492d25a9f2a57b315a8be68d0654b36d17a530efb48d7819032",
+    "A_to_B_V1/seed_57721.joblib": "0ccc59312ef2b2b389b58962236fb99f6661b180cc43efabdec2e47f6c22d856",
+    "A_to_B_V1/seed_65537.joblib": "12f664de945a80b387665ac545ab8fbfa9c607373a3462acbb5d077bfd3925a6",
+    "A_to_B_V2/seed_1729.joblib": "15d908d454d6f51eea2e3a45910654ff4f2c86bbf38534237fd07cafa6dc5f3d",
+    "A_to_B_V2/seed_2718.joblib": "9aa0cb185273f8a498448e35873465bf9c9cf42b8d7d50e771af16af8353a8d5",
+    "A_to_B_V2/seed_31415.joblib": "2c2e5727a9ef15703012e4ab17b6b21b936f1b258ffd3f990b7bd3defe27483a",
+    "A_to_B_V2/seed_57721.joblib": "87656105d552c3b793ab884317495d43db1a3479ce5b5b2d35a5270e2d0fb03e",
+    "A_to_B_V2/seed_65537.joblib": "07aa0252a7b85e1c45d7663500abb301dcb09af9e119a02eb1954cec37db1221",
+    "B_to_A_V0/seed_1729.joblib": "f8c4085ed9b5388bb4d8894b8322e33cc3b916bdebcc4dc46f3f9efe96785ae4",
+    "B_to_A_V0/seed_2718.joblib": "f1eef5ab8932b5ed63ff331bc5768bd858b1e2381a1335f33d1dad0a42bb3cbb",
+    "B_to_A_V0/seed_31415.joblib": "f289f7b7ec2aba58278b22aeadaa27686dc2a790d05fb4fc997034317c1e7857",
+    "B_to_A_V0/seed_57721.joblib": "c0979242d391f75baacbcdb7c04b3b570e8ae393f21c06c4e24c8d7bebc7ecfa",
+    "B_to_A_V0/seed_65537.joblib": "74c16af7ef40ef54bbc62993d7f64a5d176c0aa01b52da21fb1278abb4882260",
+    "B_to_A_V1/seed_1729.joblib": "20f3404b3deef369c90c83071e1bc1727dc74f638dc0139df1f218cd51f5a617",
+    "B_to_A_V1/seed_2718.joblib": "9d2da396c10925b342920f2b19932afcadffeadf25362832bda01376eb7068b7",
+    "B_to_A_V1/seed_31415.joblib": "67eb79ca0685967c2fca809230d2950f29ceef79dc130009a59714e47b593849",
+    "B_to_A_V1/seed_57721.joblib": "63ab9e627d83e909b913f4d3ba0614cc32da25499f6effde934541bc6def634d",
+    "B_to_A_V1/seed_65537.joblib": "1552d5faf9fd7fc91c07e0d60dd8e4f57e7e14503502db60922bad40ef9d4aee",
+    "B_to_A_V2/seed_1729.joblib": "3e169be02d06d21595ece628b56ebb8fee8db43d3acfc2b58fa7bd57d9ff2d29",
+    "B_to_A_V2/seed_2718.joblib": "e462bd002c086194ce5566f95f454826157cf1b5fb4f782692ebdf7b2ce34814",
+    "B_to_A_V2/seed_31415.joblib": "c8d39fda3972a1a7dd848f7d78487a56739ddddcad4d924b3e5c9026ea4baa52",
+    "B_to_A_V2/seed_57721.joblib": "0b4bc24724d38c85fad3b97a6eb47ac619feb50f203e2d111191475e1f2104ca",
+    "B_to_A_V2/seed_65537.joblib": "0c8dffad59f2248e4905df892bca428965c2957152acaf80e37b17ab6dc8122c"
+  },
+  "ensemble_protocol_sha256": "4a8704a570b980228f969c06f8343b3e10738cbdc78ad1ae77f62a993316a408",
+  "frozen_data_reference_sha256": "381e0531863ad1b534850aa08d6c8200a665ee352d5008795d4235c3df192ae6",
+  "pilot_without_recorded_train_hash": [
+    "A_to_B_V0/seed_1729.joblib"
+  ],
+  "code_sha256": {
+    "scripts/evaluate_rf_seed_stability.py": "cf220c8566553570afde5297117a887e3c4a4f4237c6974fce1edbc3780a7790",
+    "src/sepsis_cross_hospital/evaluation/metrics.py": "7053f799c65440eebbbfc3906e65e35e68e3c0e0ad67c408b6d2a3eb1feacf35",
+    "src/sepsis_cross_hospital/evaluation/thresholding.py": "a750778e40e64ceebfa0b07d2d115fa203c8734c3243a5e0ce77d7938a2508a0"
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3"
+  },
+  "frozen_at_utc": "2026-10-07T23:53:25.964558+00:00"
+}
